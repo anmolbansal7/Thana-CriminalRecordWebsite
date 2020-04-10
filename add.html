@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>THANA</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="formstyle.css">
+        <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+      </head>
+<body style="background-color: #bbbbbb;">
+<!-- NAVBAR -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="logoblk.png" width="60px"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Records <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="search.html">Search Records</a></li>
+              <li><a href="add.html">Add Records</a></li>
+              <li><a href="modify.html">Modify Records</a></li>
+              <li><a href="delete.html">Delete Records</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Emergency Numbers</a></li>
+          <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+<!-- FORM -->
+<div class="form-style-10">
+    <h1>Add to Criminal Record<span>Enter the Details of the Criminal</span></h1>
+    <form id="addCriminal">
+        <div class="section"><span>1</span>Personal Information</div>
+        <div class="inner-wrap">
+            <label>Full Name* <input type="text" id="cName" required></label>
+            <label>Gender*<br>
+                <input type="radio" id="cGender" name="gender" value="Male" required>Male
+                <input type="radio" id="cGender" name="gender" value="Female" required>Female
+                <input type="radio" id="cGender" name="gender" value="Other" required>Other
+            </label>
+            <label>Education <textarea id="cEducation"></textarea></label>
+            <label>Date of Birth* <input type="date" id="cDOB" required></label>
+            <label>Address<textarea id="cAdd"></textarea></label>
+            <label>Address of Hometown<textarea id="cHomeAdd"></textarea></label>
+            <label>Phone Number* <input type="tel" id="cPhone" pattern="[0-9]{10}" placeholder="10 Digits Phone Number Only" required></label>
+            <label>E-Mail Id <input type="email" id="cMail"></label>
+            <label>Father's Name <input type="text" id="cFather"></label>
+            <label>Mother's Name <input type="text" id="cMother"></label>
+            <label>Spouse's Name (if applicable) <input type="text" id="cSpouse"></label>
+        </div>
+    
+        <div class="section"><span>2</span>Identification Details</div>
+        <div class="inner-wrap">
+            <label>Height (in cms) <input type="number" id="cHeight" min="0"></label>
+            <label>Weight (in kgs) <input type="number" id="cWeight" min="0"></label>
+            <label>Skin Colour <select id="cSkin">
+                <option value="" disabled selected hidden> Select </option>
+                <option value="Very Fair"> Very Fair </option>
+                <option value="Fair"> Fair </option>
+                <option value="Medium"> Medium </option>
+                <option value="Olive">Olive </option>
+                <option value="Brown">Brown </option>
+                <option value="Dark Brown"> Dark Brown </option>
+                </select>
+            </label>
+            <label>Body Type 
+                <select id="cBody">
+                <option value="" disabled selected hidden> Select </option>
+                <option value="Skinny"> Skinny </option>
+                <option value="Athletic"> Athletic </option>
+                <option value="Bulky"> Bulky </option>
+                </select>
+            </label>
+            <label>Birth Mark (if any) <input type="text" id="cMark"></label>  
+        </div>
+    
+        <div class="section"><span>3</span>Past History</div>
+        <div class="inner-wrap">
+            <label>History of Crimes<textarea id="cCrimes"></textarea></label>
+            <label>Awards Announced by Various Agencies (if caught) <textarea id="cAwards"></textarea></label>
+        </div>
+        <div class="section"><span>4</span>Contact Persons</div>
+        <div class="inner-wrap">
+            <label>Format: Name & Relation (with Mobile Number) <textarea id="cContact"></textarea></label>
+        </div>
+
+        <div class="button-section">
+         <button id="submitForm"> Add Record</button>         
+        </div>
+    </form>
+    </div>
+<!-- FORM ENDS -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCnbcOpPwZDdKvlSz-cVFfXAME-VIjaVV8",
+    authDomain: "test-622c0.firebaseapp.com",
+    databaseURL: "https://test-622c0.firebaseio.com",
+    projectId: "test-622c0",
+    storageBucket: "test-622c0.appspot.com",
+    messagingSenderId: "81335831834",
+    appId: "1:81335831834:web:816865eafc5607b19970a3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+<script>
+var contactRef = firebase.database().ref().child("criminalRecord");
+
+document.getElementById("addCriminal").addEventListener("submit",submitForm);
+
+
+function submitForm(e){
+    e.preventDefault();
+
+    var Name = getInputVal("cName");
+    var Gender = getInputVal("cGender");
+    var Education = getInputVal("cEducation");
+    var DOB = getInputVal("cDOB");
+    var Add = getInputVal("cAdd");
+    var Home_Add = getInputVal("cHomeAdd");
+    var Phone = getInputVal("cPhone");
+    var Mail = getInputVal("cMail");
+    var Father = getInputVal("cFather");
+    var Mother = getInputVal("cMother");
+    var Spouse = getInputVal("cSpouse");
+
+    var Height = getInputVal("cHeight");
+    var Weight = getInputVal("cWeight");
+    var Skin = getInputVal("cSkin");
+    var Body = getInputVal("cBody");
+    var Mark = getInputVal("cMark");
+    
+    var History = getInputVal("cCrimes");
+    var Awards = getInputVal("cAwards");
+
+    var Contact = getInputVal("cContact");
+
+
+    saveForm(Name, Gender, Education, DOB, Add, Home_Add, Phone, Mail, Father, Mother, Spouse, Height, Weight, Skin, Body, Mark, History, Awards, Contact);
+    document.getElementById('addCriminal').reset();
+}
+
+function getInputVal(id){
+    return document.getElementById(id).value;
+}
+ 
+function saveForm(Name, Gender, Education, DOB, Add, Home_Add, Phone, Mail, Father, Mother, Spouse, Height, Weight, Skin, Body, Mark, History, Awards, Contact){
+    
+    var newContactRef = contactRef.push();
+    newContactRef.set({
+        Name: Name,
+        Gender: Gender,
+        Education: Education,
+        DOB: DOB,
+        Address: Add, 
+        Hometown_Adress: Home_Add,
+        Phone_Number: Phone,
+        Mail_ID: Mail,
+        Father: Father,
+        Mother: Mother,
+        Spouse: Spouse,
+        Height: Height,
+        Weight: Weight,
+        Skin_Colour: Skin,
+        Body_Type: Body,
+        Birth_Marks: Mark,
+        Crime_History: History,
+        Awards: Awards,
+        Contact_Persons: Contact
+    })
+}
+
+
+</script>
+
+
+
+<!-- Footer -->
+<div class="footer">
+  <div class="f1">
+    <p class="linkfooter">
+    <img src="logoblk.png" width="80px">
+    <br>
+    <br>
+    <a href="index.html">Home</a>
+    <br>
+    <a href="about.html">About Us</a>
+    <br>
+    <a href="contact.html">Emergency Numbers</a>
+    <br>
+    <a href="login.html">Log In</a>
+    </p>
+  </div>
+  <div class="f2">
+    <p>
+      Project By:
+      <br>
+      Anmol Bansal (19BCE0630)
+      <br>
+      Gokul Nair (19BCE2245)
+      <br>
+      Harsh Londhekar (19BCE0496)
+      <br>
+      Suyash Johri (19BCE2201)
+      
+      <br>
+    </p>
+  </div>
+  <br><br><br><br><br><br><br>
+  <hr color="red">
+        <span class="fl">
+            ***This is for Data Structures and Algorithms Project. This website is for representation purpose only.
+        </span>
+</div>
+</body>
+</html>
