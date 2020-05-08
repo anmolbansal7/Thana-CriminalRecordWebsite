@@ -13,7 +13,7 @@
         <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
         <link rel="icon" href="blacklogo.png" type="image/icon type">
       </head>
-<body style="background-color: #bbbbbb;">
+<body>
 <!-- NAVBAR -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -30,9 +30,9 @@
         <li><a href="index.html"> Home </a></li>
         <li><a href="about.html"> About Us </a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle active" data-toggle="dropdown" href="#"> Records <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Records <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="search.html"> Search Records </a></li>
+            <li class="active"><a href="search.html"> Search Records </a></li>
             <li style="cursor: pointer;"><a onclick="loginauth1()"> Add Criminal Records </a></li>
             <li style="cursor: pointer;"><a href="modify.html"> Modify Criminal Records </a></li>
             <li style="cursor: pointer;"><a href="delete.html"> Delete Criminal Records </a></li>
@@ -103,9 +103,11 @@
  }
 }
 </script>
-<!-- MODAL LOGIN ENDS -->  
+<!-- MODAL LOGIN ENDS -->
+
+<div style="padding: 2%; min-height: 45vw;">
 <!-- FORM -->
-<div class="form-style-10">
+<div class="form-style-10" style="display: none;">
     <h1>Add to Criminal Record<span>Enter the Details of the Criminal</span></h1>
     <form id="addCriminal">
         <div class="section"><span>1</span>Personal Information</div>
@@ -163,12 +165,73 @@
         </div>
 
         <div class="button-section">
-         <button id="submitForm" onclick="added()"> Add Record</button>         
+         <button id="submitForm"> Add Record</button>         
         </div>
     </form>
     </div>
 <!-- FORM ENDS -->
+<!-- TABLE -->
+<div style="padding: 5%;">
+    <h2 style="text-align: center;"> <b>Search Criminal Record</b></h2>
+    <br>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<table id="myTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Date of Birth</th>
+    </tr>
+  </thead>
+  <tbody id="table_bdy">
 
+
+  </tbody>
+</table>
+</div>
+</div>
+
+<!-- TABLE -->
+<style>
+    #myInput {
+  background-image: url(search.png);
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#myTable {
+  border-collapse: collapse;
+}
+</style>
+
+
+<script>
+    function myFunction() {
+      var input, filter, table, tr, th, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        th = tr[i].getElementsByTagName("th")[0];
+        if (th) {
+          txtValue = th.textContent || th.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+
+
+
+
+    </script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 
@@ -195,6 +258,7 @@
 var contactRef = firebase.database().ref().child("criminalRecord");
 
 document.getElementById("addCriminal").addEventListener("submit",submitForm);
+
 
 function submitForm(e){
     e.preventDefault();
@@ -256,10 +320,21 @@ function saveForm(Name, Gender, Education, DOB, Add, Home_Add, Phone, Mail, Fath
         Contact_Persons: Contact
     })
 }
-function added(){
-  window.alert("Record Added")
-}
+
+contactRef.on("child_added", snap=>{
+  
+  var Name = snap.child("Name").val();
+  var Gender = snap.child("Gender").val();
+  var DOB = snap.child("DOB").val();
+  
+
+$('#table_bdy').append("<tr> <td>"+Name+"</td> <td>"+Gender+"</td> <td>"+DOB+"</td> </tr>");
+});
+
+
+
 </script>
+
 
 
 <!-- Footer -->
@@ -380,5 +455,6 @@ function added(){
       }
     }
 </script>
-<!-- JS for LoginAuth Ends --></body>
+<!-- JS for LoginAuth Ends -->
+</body>
 </html>

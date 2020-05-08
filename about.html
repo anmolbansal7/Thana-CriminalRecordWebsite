@@ -4,10 +4,13 @@
   <title>THANA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="blacklogo.png" type="image/icon type">
 </head>
 <body>
 <!-- NAVBAR -->
@@ -23,28 +26,86 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="about.html">About Us</a></li>
+        <li><a href="index.html"> Home </a></li>
+        <li class="active"><a href="about.html"> About Us </a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Records <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Records <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="search.html">Search Records</a></li>
-            <li><a href="add.html">Add Criminal Records</a></li>
-            <li><a href="modify.html">Modify Criminal Records</a></li>
-            <li><a href="delete.html">Delete Criminal Records</a></li>
+            <li><a href="search.html"> Search Records </a></li>
+            <li style="cursor: pointer;"><a onclick="loginauth1()"> Add Criminal Records </a></li>
+            <li style="cursor: pointer;"><a href="modify.html"> Modify Criminal Records </a></li>
+            <li style="cursor: pointer;"><a href="delete.html"> Delete Criminal Records </a></li>
           </ul>
         </li>
-        <li><a href="contact.html">Emergency Numbers</a></li>
-        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+            <li><a href="contact.html"> Emergency Numbers </a></li>
+<!-- MODAL LOGIN BUTTONS -->
+            <li>
+              <button class="btn" id="loginbtn" data-toggle="modal" data-target="#popUpWindow">
+                <span class="glyphicon glyphicon-log-in" ></span> 
+                Log In 
+              </button>
+              </li>
+            <li>
+              <button class="btn" id="btnLogout" style="display: none;" onclick="logout()"> 
+                <span class="glyphicon glyphicon-log-out"></span> 
+                Log Out 
+              </button>
+            </li>
       </ul>
     </div>
   </div>
 </nav>
+<!-- MODAL LOGIN -->
+<div class="container">  
+  <div class="modal fade" id="popUpWindow">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div id="login_div">
+        <!-- header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Login</h3>
+        </div>
+        <!-- body -->
+        <div class="modal-header">
+          <form role="form">
+            <div class="form-group">
+              <input type="email" id= "txtEmail" class="form-control" placeholder="Email"/>
+              <br>
+              <input type="password" id="txtPassword" class="form-control" placeholder="Password" />
+              <br>
+              <input type="button" onclick="myFunction()" onmouseover="myFunction()" onmouseout="myFunction()" value="Show Password">
+            </div>
+          </form>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <button class="btn btn-block" id="btnLogin" onclick="login()">Log In</button>
+        </div>
+        </div>
+      <!-- success -->
+      <div id="user_div" class="modal-success" style="display: none;">
+        <h3 class="modal-title" style="text-align: center;">Logged In Successfully !!</h3>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- JS for SHOW PASSWORD -->
+<script>
+  function myFunction() {
+ var x = document.getElementById("txtPassword");
+ if (x.type === "password") {
+   x.type = "text";
+ } else {
+   x.type = "password";
+ }
+}
+</script>
+<!-- MODAL LOGIN ENDS -->
 
+<!-- About Text -->
 <p class = abouttxt>
-
-
 In this fast-paced world, it is a daunting task to manage a manual record of the criminals. A Criminal Record Management System is a computer or web-based system that facilitates managing the criminal records, official records which helps to increase the efficiency of the police. This system or software will help in making the whole functioning paperless. It integrates all the information regarding crimes, criminals, police officials and registering an online complaint into one software.
 Our project <b>“THANA – A Criminal Record Management System”</b> includes adding, modifying and deleting record of a criminal as well of the concerned police officer. Our software has the facility to access the contact details of emergency services and major police officials and to register an online complaint. 
 The criminal record management system is duly protected with access control which can only be modified using the Login Id and Password. More functionalities to strengthen security shall be added as we move forward. The police official can search every detail about a criminal’s past history whereas a guest can only see the name and the photograph of the criminal. 
@@ -63,30 +124,83 @@ Search Options.
 Registering an Online Complaint.
 <br>
 Accessing Emergency Numbers and Contact Details of Officials.
-<br>
-<br>
-<br>
+<br><br><br>
 </p>
+<!-- End of Text -->
 
+<p class="team"> Our Team </p>
+<br><br>
+<!-- Team Member Cards -->
+<div class="abcd">
 
-
-
-
+  <div class="us">
+    <img src="ab.jpeg" alt="John" style="width:100%">
+      <h2>Anmol Bansal</h2>
+      <p class="title">Full Stack Developer</p>
+      <p class="clg">Vellore Institute of Technology, Vellore</p>
+        <div style="margin: 24px 0;"> 
+          <a href="mailto: anmol.bansal2019@vitstudent.ac.in"><i class="fa fa-google"></i></a>
+          <a href="https://www.linkedin.com/in/anmolbansal7/" target="_blank"><i class="fa fa-linkedin"></i></a> 
+          <a href="https://github.com/anmolbansal7" target="_blank"><i class="fa fa-github"></i></a> 
+          <a href="https://instagram.com/anmol_bansal_7" target="_blank"><i class="fa fa-instagram"></i></a> 
+        </div>
+  </div>
+  
+  <div class="us">
+      <img src="sj.jpeg" alt="John" style="width:100%">
+        <h2>Suyash Johri</h2>
+        <p class="title">Backend Developer</p>
+        <p class="clg">Vellore Institute of Technology, Vellore</p>
+          <div style="margin: 24px 0;"> 
+            <a href="mailto: suyash.johri2019@vitstudent.ac.in"><i class="fa fa-google"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a> 
+            <a href="#"><i class="fa fa-github"></i></a> 
+            <a href="https://instagram.com/suyash.johrii" target="_blank"><i class="fa fa-instagram"></i></a> 
+          </div>
+  </div>
+  
+    <div class="us">
+      <img src="grn.jpeg" alt="John" style="width:100%">
+        <h2>Gokul Nair</h2>
+        <p class="title">iOS Developer</p>
+        <p class="clg">Vellore Institute of Technology, Vellore</p>
+          <div style="margin: 24px 0;"> 
+            <a href="mailto: gokul.nair2019@vitstudent.ac.in"><i class="fa fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/gokul-r-nair" target="_blank"><i class="fa fa-linkedin"></i></a> 
+            <a href="https://github.com/gokulnair2001" target="_blank"><i class="fa fa-github"></i></a> 
+            <a href="https://instagram.com/_gokul_r_nair_" target="_blank"><i class="fa fa-instagram"></i></a> 
+          </div>
+    </div>
+  
+    <div class="us">
+      <img src="hl.jpg" alt="John" style="width:100%">
+        <h2>Harsh Londhekar</h2>
+        <p class="title">iOS Developer</p>
+        <p class="clg">Vellore Institute of Technology, Vellore</p>
+          <div style="margin: 24px 0;"> 
+            <a href="mailto: harshvivek.londhekar2019@vitstudent.ac.in"><i class="fa fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/harshlondhekar" target="_blank"><i class="fa fa-linkedin"></i></a> 
+            <a href="https://github.com/Harsh4601" target="_blank"><i class="fa fa-github"></i></a> 
+            <a href="https://www.instagram.com/harsh_vl4601/" target="_blank"><i class="fa fa-instagram"></i></a> 
+          </div>
+      </div>
+  </div>  
+<!-- End of Team Cards -->
 
 <!-- Footer -->
 <div class="footer">
   <div class="f1">
     <p class="linkfooter">
-    <img src="logoblk.png" width="80px">
-    <br>
-    <br>
-    <a href="index.html">Home</a>
-    <br>
-    <a href="about.html">About Us</a>
-    <br>
-    <a href="contact.html">Emergency Numbers</a>
-    <br>
-    <a href="login.html">Log In</a>
+      <img src="logoblk.png" width="80px">
+      <br>
+      <br>
+      <a class="footerlink" href="index.html"> Home </a>
+      <br>
+      <a class="footerlink" href="about.html"> About Us </a>
+      <br>
+      <a class="footerlink" href="search.html"> Search Records </a>
+      <br>
+      <a class="footerlink" href="contact.html"> Emergency Numbers </a>
     </p>
   </div>
   <div class="f2">
@@ -100,15 +214,97 @@ Accessing Emergency Numbers and Contact Details of Officials.
       Harsh Londhekar (19BCE0496)
       <br>
       Suyash Johri (19BCE2201)
-      
       <br>
     </p>
   </div>
   <br><br><br><br><br><br><br>
   <hr color="red">
         <span class="fl">
-            ***This is for Data Structures and Algorithms Project. This website is for representation purpose only.
+          &copy; Anmol Bansal, 2020, Version 1.4 (This website is for representation purpose only)
         </span>
 </div>
+<!-- End of Footer -->
+
+
+<!-- JS for LoginAuth -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCnbcOpPwZDdKvlSz-cVFfXAME-VIjaVV8",
+    authDomain: "test-622c0.firebaseapp.com",
+    databaseURL: "https://test-622c0.firebaseio.com",
+    projectId: "test-622c0",
+    storageBucket: "test-622c0.appspot.com",
+    messagingSenderId: "81335831834",
+    appId: "1:81335831834:web:816865eafc5607b19970a3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+  //on auth state change
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) 
+    {
+      // User is signed in.
+      document.getElementById("user_div").style.display = "block";
+      document.getElementById("login_div").style.display = "none";
+      document.getElementById("btnLogout").style.display = "block";
+      document.getElementById("loginbtn").style.display = "none";
+    } 
+    else 
+    {
+      // No user is signed in.
+      document.getElementById("user_div").style.display = "none";
+      document.getElementById("login_div").style.display = "block";
+      document.getElementById("btnLogout").style.display = "none";
+      document.getElementById("loginbtn").style.display = "block";
+    }
+  });
+
+  //for login 
+  function login()
+  {
+    var txtEmail = document.getElementById("txtEmail").value;
+    var txtPass = document.getElementById("txtPassword").value;
+
+    firebase.auth().signInWithEmailAndPassword(txtEmail, txtPass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      window.alert(errorMessage);
+      // ...
+    });
+  }
+  
+  //for logout
+  function logout(){
+    firebase.auth().signOut();
+    location.reload(); 
+  }
+
+  //for add records authorisation
+  function loginauth1()
+    {
+      var user = firebase.auth().currentUser;
+      if (user)
+      {
+        location.replace("add.html");
+      }
+      else
+      {
+        window.alert("Login to Add in Criminal Record");
+      }
+    }
+</script>
+<!-- JS for LoginAuth Ends -->
 </body>
 </html>

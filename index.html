@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <title>THANA</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="blacklogo.png" type="image/icon type">
 </head>
 <body>
+
 <!-- NAVBAR -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -24,23 +26,84 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li class="active"><a href="index.html"> Home </a></li>
+        <li><a href="about.html"> About Us </a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Records <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Records <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="search.html">Search Records</a></li>
-            <li><a href="add.html">Add Criminal Records</a></li>
-            <li><a href="modify.html">Modify Criminal Records</a></li>
-            <li><a href="delete.html">Delete Criminal Records</a></li>
+            <li><a href="search.html"> Search Records </a></li>
+            <li style="cursor: pointer;"><a onclick="loginauth1()"> Add Criminal Records </a></li>
+            <li style="cursor: pointer;"><a href="modify.html"> Modify Criminal Records </a></li>
+            <li style="cursor: pointer;"><a href="delete.html"> Delete Criminal Records </a></li>
           </ul>
         </li>
-        <li><a href="contact.html">Emergency Numbers</a></li>
-        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+            <li><a href="contact.html"> Emergency Numbers </a></li>
+<!-- MODAL LOGIN BUTTONS -->
+            <li>
+              <button class="btn" id="loginbtn" data-toggle="modal" data-target="#popUpWindow">
+                <span class="glyphicon glyphicon-log-in" ></span> 
+                Log In 
+              </button>
+              </li>
+            <li>
+              <button class="btn" id="btnLogout" style="display: none;" onclick="logout()"> 
+                <span class="glyphicon glyphicon-log-out"></span> 
+                Log Out 
+              </button>
+            </li>
       </ul>
     </div>
   </div>
 </nav>
+<!-- MODAL LOGIN -->
+<div class="container">  
+  <div class="modal fade" id="popUpWindow">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div id="login_div">
+        <!-- header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Login</h3>
+        </div>
+        <!-- body -->
+        <div class="modal-header">
+          <form role="form">
+            <div class="form-group">
+              <input type="email" id= "txtEmail" class="form-control" placeholder="Email"/>
+              <br>
+              <input type="password" id="txtPassword" class="form-control" placeholder="Password" />
+              <br>
+              <input type="button" onclick="myFunction()" onmouseover="myFunction()" onmouseout="myFunction()" value="Show Password">
+            </div>
+          </form>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <button class="btn btn-block" id="btnLogin" onclick="login()">Log In</button>
+        </div>
+        </div>
+      <!-- success -->
+      <div id="user_div" class="modal-success" style="display: none;">
+        <h3 class="modal-title" style="text-align: center;">Logged In Successfully !!</h3>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS for SHOW PASSWORD -->
+<script>
+  function myFunction() {
+ var x = document.getElementById("txtPassword");
+ if (x.type === "password") {
+   x.type = "text";
+ } else {
+   x.type = "password";
+ }
+}
+</script>
+
+<!-- MODAL LOGIN ENDS -->
 
 
 <div class="logo">
@@ -49,20 +112,21 @@
   <p class="mob"> A Complete Solution for Criminal Records</p>
 </div>
 
+
 <!-- Footer -->
 <div class="footer">
   <div class="f1">
     <p class="linkfooter">
-    <img src="logoblk.png" width="80px">
-    <br>
-    <br>
-    <a href="index.html">Home</a>
-    <br>
-    <a href="about.html">About Us</a>
-    <br>
-    <a href="contact.html">Emergency Numbers</a>
-    <br>
-    <a href="login.html">Log In</a>
+      <img src="logoblk.png" width="80px">
+      <br>
+      <br>
+      <a class="footerlink" href="index.html"> Home </a>
+      <br>
+      <a class="footerlink" href="about.html"> About Us </a>
+      <br>
+      <a class="footerlink" href="search.html"> Search Records </a>
+      <br>
+      <a class="footerlink" href="contact.html"> Emergency Numbers </a>
     </p>
   </div>
   <div class="f2">
@@ -76,15 +140,99 @@
       Harsh Londhekar (19BCE0496)
       <br>
       Suyash Johri (19BCE2201)
-      
       <br>
     </p>
   </div>
   <br><br><br><br><br><br><br>
   <hr color="red">
         <span class="fl">
-            ***This is for Data Structures and Algorithms Project. This website is for representation purpose only.
+            &copy; Anmol Bansal, 2020, Version 1.4 (This website is for representation purpose only)
         </span>
 </div>
+<!-- End of Footer -->
+
+
+<!-- JS for LoginAuth -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCnbcOpPwZDdKvlSz-cVFfXAME-VIjaVV8",
+    authDomain: "test-622c0.firebaseapp.com",
+    databaseURL: "https://test-622c0.firebaseio.com",
+    projectId: "test-622c0",
+    storageBucket: "test-622c0.appspot.com",
+    messagingSenderId: "81335831834",
+    appId: "1:81335831834:web:816865eafc5607b19970a3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+  //on auth state change
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) 
+    {
+      // User is signed in.
+      document.getElementById("user_div").style.display = "block";
+      document.getElementById("login_div").style.display = "none";
+      document.getElementById("btnLogout").style.display = "block";
+      document.getElementById("loginbtn").style.display = "none";
+    } 
+    else 
+    {
+      // No user is signed in.
+      document.getElementById("user_div").style.display = "none";
+      document.getElementById("login_div").style.display = "block";
+      document.getElementById("btnLogout").style.display = "none";
+      document.getElementById("loginbtn").style.display = "block";
+    }
+  });
+
+  //for login 
+  function login()
+  {
+    var txtEmail = document.getElementById("txtEmail").value;
+    var txtPass = document.getElementById("txtPassword").value;
+
+    firebase.auth().signInWithEmailAndPassword(txtEmail, txtPass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      window.alert(errorMessage);
+      // ...
+    });
+  }
+  
+  //for logout
+  function logout(){
+    firebase.auth().signOut();
+    location.reload(); 
+  }
+
+  //for add records authorisation
+  function loginauth1()
+    {
+      var user = firebase.auth().currentUser;
+      if (user)
+      {
+        location.replace("add.html");
+      }
+      else
+      {
+        window.alert("Login to Add in Criminal Record");
+      }
+    }
+</script>
+<!-- JS for LoginAuth Ends -->
+
+
 </body>
 </html>

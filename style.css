@@ -1,11 +1,72 @@
+/* NAVBAR BACKGROUND COLOR */
 .container-fluid{
     background-color: black;
 }
 
+
+/* Login Logout Button */
+button.btn{
+    background-color: black;
+    color: rgb(151, 150, 150);
+    border-radius: 0%;
+    margin-top: 10%;
+}
+button.btn:hover{
+    color: white;
+}
+@media only screen and (max-width: 750px){
+    button.btn{
+        margin-top: 0%;
+    }
+}
+
+
+/* First Page */
+p.mob{
+    text-align: center;
+    text-decoration: solid;
+    text-shadow: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+div.logo{
+    padding: 5%;
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+.imgmobile{
+    display: none;
+}
+p.mob{
+    display: none;
+}
+@media only screen and (max-width: 750px) {
+    div.logo {
+      padding: 0%;
+      margin: 0%;
+      padding-bottom: 25%;
+      padding-top: 25%;
+    }
+    .imgfull{
+        display: none;
+    }
+    .imgmobile{
+        display: block;
+    }
+    p.mob{
+        display: inline;
+    }
+  }
+
+
 /* FOOTER */
+div.footer{
+    margin-bottom: 0%;
+}
 div.f1 {
 	width: 50%;
-	float: left;
+    float: left;
 }
 div.f2 {
 	width: 50%;
@@ -13,7 +74,11 @@ div.f2 {
 }
 p.linkfooter{
 	text-decoration: none;
-	font-weight: bold;
+    font-weight: bold;
+    
+}
+a.footerlink{
+    color: white;
 }
 .footer {
 	position: bottom;
@@ -45,63 +110,7 @@ p.abouttxt{
 }
 
 
-/* LOGIN PAGE */
-.box input[type="text"],.box input[type="password"]
-{
-    border:0;
-    background:none;
-    display:block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #000000;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-}
-.box input[type="text"]:focus,.box input[type="password"]:focus
-{
-    border-color: #2ecc71;
-} 
-.box input[type="button"]{
-    border:0;
-    background:none;
-    display:block;
-    margin: 20px auto;
-    text-align: center;
-    border: none;
-    padding: 5px 2px;
-    width: 150px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-}
-.box input[type="button"]:hover{
-    color: #2ecc71;
-}
-.box input[type="submit"]{
-    border:0;
-    background:none;
-    display:block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #000000;
-    padding: 14px 40px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
-}
-.box input[type="submit"]:hover{
-    background: #2ecc71;
-    color: white;
-}
-
-
-/* table */
+/* EMERGENCY TABLE*/
 table{
     border-collapse: collapse;
     width: 100%;
@@ -115,42 +124,57 @@ tr:hover{
     background-color: #f5f5f5;
 }
 
-p.mob{
-    text-align: center;
-    text-decoration: solid;
-    text-shadow: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
+/* About Page */
+div.abcd{
+    display: flex;
+    margin-bottom: 5%;
 }
-
-
-div.logo{
-    padding: 5%;
-    text-align: center;
-    width: 100%;
-    height: auto;
+div.us {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 20%;
+  height: auto;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
 }
-.imgmobile{
-    display: none;
-}
-p.mob{
-    display: none;
-}
-@media only screen and (max-width: 750px) {
-    div.logo {
-      padding: 0%;
-      margin: 0%;
-      padding-bottom: 25%;
-      padding-top: 25%;
-    }
-    .imgfull{
-        display: none;
-    }
-    .imgmobile{
+@media only screen and (max-width: 750px){
+    div.abcd{
         display: block;
     }
-    p.mob{
-        display: inline;
+    div.us{
+        width: 90%;
     }
+}
+.title {
+  color: grey;
+  font-size: 14px;
+}
+p.clg{
+  font-size: 12px;;
+}
+button:hover, a:hover {
+  opacity: 0.7;
+}
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    color: black;
   }
+p.team{
+    text-align: center;
+    text-decoration: black;
+    font-weight: bolder;
+    font-size: 30px;
+}
 
+
+/* Construction Error */
+div.construction{
+    text-align: center;
+    font-size: xx-large;
+    padding: 20%;
+}
