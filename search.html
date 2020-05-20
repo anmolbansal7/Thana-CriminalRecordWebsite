@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,9 +12,62 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="formstyle.css">
         <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-        <link rel="icon" href="blacklogo.png" type="image/icon type">
+        <link rel="icon" href="assets/blacklogo.png" type="image/icon type">
+        <style>
+          /* Center the loader */
+          #loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid black;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+          }
+          
+          @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          
+          /* Add animation to "page content" */
+          .animate-bottom {
+            position: relative;
+            -webkit-animation-name: animatebottom;
+            -webkit-animation-duration: 1s;
+            animation-name: animatebottom;
+            animation-duration: 1s
+          }
+          
+          @-webkit-keyframes animatebottom {
+            from { bottom:-100px; opacity:0 } 
+            to { bottom:0px; opacity:1 }
+          }
+          
+          @keyframes animatebottom { 
+            from{ bottom:-100px; opacity:0 } 
+            to{ bottom:0; opacity:1 }
+          }
+          
+          #myDiv {
+            display: none;
+            text-align: center;
+          }
+          </style>
       </head>
-<body>
+<body onload="loading()">
 <!-- NAVBAR -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -23,7 +77,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logoblk.png" width="60px"></a>
+      <a class="navbar-brand" href="index.html"><img src="assets/logoblk.png" width="60px"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -171,42 +225,29 @@
     </div>
 <!-- FORM ENDS -->
 <!-- TABLE -->
+<div id="loader"></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
 <div style="padding: 5%;">
     <h2 style="text-align: center;"> <b>Search Criminal Record</b></h2>
     <br>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 <table id="myTable">
   <thead>
     <tr>
       <th>Name</th>
       <th>Gender</th>
       <th>Date of Birth</th>
+      <th>Phone Number</th>
     </tr>
   </thead>
   <tbody id="table_bdy">
-
 
   </tbody>
 </table>
 </div>
 </div>
+</div>
 
 <!-- TABLE -->
-<style>
-    #myInput {
-  background-image: url(search.png);
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-#myTable {
-  border-collapse: collapse;
-}
-</style>
-
 
 <script>
     function myFunction() {
@@ -326,9 +367,10 @@ contactRef.on("child_added", snap=>{
   var Name = snap.child("Name").val();
   var Gender = snap.child("Gender").val();
   var DOB = snap.child("DOB").val();
+  var Phone = snap.child("Phone_Number").val();
   
 
-$('#table_bdy').append("<tr> <td>"+Name+"</td> <td>"+Gender+"</td> <td>"+DOB+"</td> </tr>");
+$('#table_bdy').append("<tr> <td>"+Name+"</td> <td>"+Gender+"</td> <td>"+DOB+"</td> <td>"+Phone+"</td> </tr>");
 });
 
 
@@ -341,7 +383,7 @@ $('#table_bdy').append("<tr> <td>"+Name+"</td> <td>"+Gender+"</td> <td>"+DOB+"</
 <div class="footer">
   <div class="f1">
     <p class="linkfooter">
-      <img src="logoblk.png" width="80px">
+      <img src="assets/logoblk.png" width="80px">
       <br>
       <br>
       <a class="footerlink" href="index.html"> Home </a>
@@ -456,5 +498,18 @@ $('#table_bdy').append("<tr> <td>"+Name+"</td> <td>"+Gender+"</td> <td>"+DOB+"</
     }
 </script>
 <!-- JS for LoginAuth Ends -->
+<!-- JS for Loading -->
+<script>
+  var myVar;
+  
+  function loading() {
+    myVar = setTimeout(showPage, 5000);
+  }
+  
+  function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("myDiv").style.display = "block";
+  }
+  </script>
 </body>
 </html>

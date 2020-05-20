@@ -10,7 +10,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="icon" href="blacklogo.png" type="image/icon type">
+  <link rel="icon" href="assets/blacklogo.png" type="image/icon type">
+  <script src="script.js"></script>
 </head>
 <body>
 <!-- NAVBAR -->
@@ -22,7 +23,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logoblk.png" width="60px"></a>
+      <a class="navbar-brand" href="index.html"><img src="assets/logoblk.png" width="60px"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -90,18 +91,6 @@
     </div>
   </div>
 </div>
-
-<!-- JS for SHOW PASSWORD -->
-<script>
-  function myFunction() {
- var x = document.getElementById("txtPassword");
- if (x.type === "password") {
-   x.type = "text";
- } else {
-   x.type = "password";
- }
-}
-</script>
 <!-- MODAL LOGIN ENDS -->
 
 <!-- About Text -->
@@ -134,7 +123,7 @@ Accessing Emergency Numbers and Contact Details of Officials.
 <div class="abcd">
 
   <div class="us">
-    <img src="ab.jpeg" alt="John" style="width:100%">
+    <img src="assets/ab.jpeg" alt="John" style="width:100%">
       <h2>Anmol Bansal</h2>
       <p class="title">Full Stack Developer</p>
       <p class="clg">Vellore Institute of Technology, Vellore</p>
@@ -147,7 +136,7 @@ Accessing Emergency Numbers and Contact Details of Officials.
   </div>
   
   <div class="us">
-      <img src="sj.jpeg" alt="John" style="width:100%">
+      <img src="assets/sj.jpeg" alt="John" style="width:100%">
         <h2>Suyash Johri</h2>
         <p class="title">Backend Developer</p>
         <p class="clg">Vellore Institute of Technology, Vellore</p>
@@ -160,7 +149,7 @@ Accessing Emergency Numbers and Contact Details of Officials.
   </div>
   
     <div class="us">
-      <img src="grn.jpeg" alt="John" style="width:100%">
+      <img src="assets/grn.jpeg" alt="John" style="width:100%">
         <h2>Gokul Nair</h2>
         <p class="title">iOS Developer</p>
         <p class="clg">Vellore Institute of Technology, Vellore</p>
@@ -173,7 +162,7 @@ Accessing Emergency Numbers and Contact Details of Officials.
     </div>
   
     <div class="us">
-      <img src="hl.jpg" alt="John" style="width:100%">
+      <img src="assets/hl.jpg" alt="John" style="width:100%">
         <h2>Harsh Londhekar</h2>
         <p class="title">iOS Developer</p>
         <p class="clg">Vellore Institute of Technology, Vellore</p>
@@ -191,7 +180,7 @@ Accessing Emergency Numbers and Contact Details of Officials.
 <div class="footer">
   <div class="f1">
     <p class="linkfooter">
-      <img src="logoblk.png" width="80px">
+      <img src="assets/logoblk.png" width="80px">
       <br>
       <br>
       <a class="footerlink" href="index.html"> Home </a>
@@ -234,77 +223,6 @@ Accessing Emergency Numbers and Contact Details of Officials.
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCnbcOpPwZDdKvlSz-cVFfXAME-VIjaVV8",
-    authDomain: "test-622c0.firebaseapp.com",
-    databaseURL: "https://test-622c0.firebaseio.com",
-    projectId: "test-622c0",
-    storageBucket: "test-622c0.appspot.com",
-    messagingSenderId: "81335831834",
-    appId: "1:81335831834:web:816865eafc5607b19970a3"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-<script>
-  //on auth state change
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) 
-    {
-      // User is signed in.
-      document.getElementById("user_div").style.display = "block";
-      document.getElementById("login_div").style.display = "none";
-      document.getElementById("btnLogout").style.display = "block";
-      document.getElementById("loginbtn").style.display = "none";
-    } 
-    else 
-    {
-      // No user is signed in.
-      document.getElementById("user_div").style.display = "none";
-      document.getElementById("login_div").style.display = "block";
-      document.getElementById("btnLogout").style.display = "none";
-      document.getElementById("loginbtn").style.display = "block";
-    }
-  });
-
-  //for login 
-  function login()
-  {
-    var txtEmail = document.getElementById("txtEmail").value;
-    var txtPass = document.getElementById("txtPassword").value;
-
-    firebase.auth().signInWithEmailAndPassword(txtEmail, txtPass).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      window.alert(errorMessage);
-      // ...
-    });
-  }
-  
-  //for logout
-  function logout(){
-    firebase.auth().signOut();
-    location.reload(); 
-  }
-
-  //for add records authorisation
-  function loginauth1()
-    {
-      var user = firebase.auth().currentUser;
-      if (user)
-      {
-        location.replace("add.html");
-      }
-      else
-      {
-        window.alert("Login to Add in Criminal Record");
-      }
-    }
-</script>
-<!-- JS for LoginAuth Ends -->
+<script src="script.js"></script>
 </body>
 </html>

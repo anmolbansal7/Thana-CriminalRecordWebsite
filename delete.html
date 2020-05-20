@@ -11,7 +11,8 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="formstyle.css">
         <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-        <link rel="icon" href="blacklogo.png" type="image/icon type">
+        <link rel="icon" href="assets/blacklogo.png" type="image/icon type">
+        <script src="script.js"></script>
       </head>
 <body>
 <!-- NAVBAR -->
@@ -23,7 +24,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logoblk.png" width="60px"></a>
+      <a class="navbar-brand" href="index.html"><img src="assets/logoblk.png" width="60px"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -32,10 +33,10 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Records <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="active"><a href="search.html"> Search Records </a></li>
-            <li style="cursor: pointer;"><a onclick="loginauth1()"> Add Criminal Records </a></li>
+            <li><a href="search.html"> Search Records </a></li>
+            <li style="cursor: pointer;" ><a onclick="loginauth1()"> Add Criminal Records </a></li>
             <li style="cursor: pointer;"><a href="modify.html"> Modify Criminal Records </a></li>
-            <li style="cursor: pointer;"><a href="delete.html"> Delete Criminal Records </a></li>
+            <li style="cursor: pointer;" class="active"><a href="delete.html"> Delete Criminal Records </a></li>
           </ul>
         </li>
             <li><a href="contact.html"> Emergency Numbers </a></li>
@@ -92,17 +93,6 @@
   </div>
 </div>
 
-<!-- JS for SHOW PASSWORD -->
-<script>
-  function myFunction() {
- var x = document.getElementById("txtPassword");
- if (x.type === "password") {
-   x.type = "text";
- } else {
-   x.type = "password";
- }
-}
-</script>
 <!-- MODAL LOGIN ENDS --><style>
     button.home{
 	background: black;
@@ -139,7 +129,7 @@
 <div class="footer">
   <div class="f1">
     <p class="linkfooter">
-      <img src="logoblk.png" width="80px">
+      <img src="assets/logoblk.png" width="80px">
       <br>
       <br>
       <a class="footerlink" href="index.html"> Home </a>
@@ -182,77 +172,5 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCnbcOpPwZDdKvlSz-cVFfXAME-VIjaVV8",
-    authDomain: "test-622c0.firebaseapp.com",
-    databaseURL: "https://test-622c0.firebaseio.com",
-    projectId: "test-622c0",
-    storageBucket: "test-622c0.appspot.com",
-    messagingSenderId: "81335831834",
-    appId: "1:81335831834:web:816865eafc5607b19970a3"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-<script>
-  //on auth state change
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) 
-    {
-      // User is signed in.
-      document.getElementById("user_div").style.display = "block";
-      document.getElementById("login_div").style.display = "none";
-      document.getElementById("btnLogout").style.display = "block";
-      document.getElementById("loginbtn").style.display = "none";
-    } 
-    else 
-    {
-      // No user is signed in.
-      document.getElementById("user_div").style.display = "none";
-      document.getElementById("login_div").style.display = "block";
-      document.getElementById("btnLogout").style.display = "none";
-      document.getElementById("loginbtn").style.display = "block";
-    }
-  });
-
-  //for login 
-  function login()
-  {
-    var txtEmail = document.getElementById("txtEmail").value;
-    var txtPass = document.getElementById("txtPassword").value;
-
-    firebase.auth().signInWithEmailAndPassword(txtEmail, txtPass).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      window.alert(errorMessage);
-      // ...
-    });
-  }
-  
-  //for logout
-  function logout(){
-    firebase.auth().signOut();
-    location.reload(); 
-  }
-
-  //for add records authorisation
-  function loginauth1()
-    {
-      var user = firebase.auth().currentUser;
-      if (user)
-      {
-        location.replace("add.html");
-      }
-      else
-      {
-        window.alert("Login to Add in Criminal Record");
-      }
-    }
-</script>
-<!-- JS for LoginAuth Ends -->
 </body>
 </html>
