@@ -1,6 +1,8 @@
 # Thana Criminal Record System 🚔👮🏻‍♂️
 ## A Criminal Record Management System using Firebase
 
+#### [Project Report.pdf](https://github.com/anmolbansal7/Thana-CriminalRecordWebsite/files/7789247/Thana.Project.Report.pdf)
+
 > This is a Data Structure and Algorithm Project Website. Just an extra effort to gain more marks and side by side learn WebDev.
 
 ## Functionality of the website :
@@ -24,6 +26,16 @@
 
 ## Website link:
 [Thana - Criminal Record System](https://thana.netlify.app)
+
+
+## Demo Videos
+
+https://user-images.githubusercontent.com/60514776/147671438-d9ffc783-bafa-41b2-a563-7df1583d1010.mp4
+
+
+
+https://user-images.githubusercontent.com/60514776/147671435-d65004c7-6e4c-4a33-a075-17cb0f408702.mp4
+
 
 ### Hope you like it! ✌🏻
 
